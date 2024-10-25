@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socially/data/models/post_model.dart';
+import 'package:socially/logic/comment_bloc/comment_bloc.dart';
 import 'package:socially/presentation/themes/app_colors.dart';
 import 'package:socially/presentation/themes/app_typography.dart';
 import 'package:socially/presentation/widgets/comment_dialog.dart';
@@ -25,6 +27,7 @@ class PostWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          //! User Info
           Row(
             children: [
               CircleAvatar(
@@ -51,6 +54,7 @@ class PostWidget extends StatelessWidget {
           //! Post's Images
           PostImage(imagesUrls: post.imageUrls),
           const SizedBox(height: 12),
+          //! Post's Content
           Text(
             post.content,
             style: AppTypography.bodyLarge.copyWith(color: AppColors.darkGray),
@@ -59,6 +63,7 @@ class PostWidget extends StatelessWidget {
           post.imageUrls.isEmpty
               ? const Divider(color: AppColors.darkBlueTransparent)
               : Container(),
+          //! Reactions
           Row(
             children: [
               Image.asset('assets/icons/like_lite.png'),
@@ -69,21 +74,26 @@ class PostWidget extends StatelessWidget {
                     .copyWith(color: AppColors.darkGray),
               ),
               const SizedBox(width: 16),
-              GestureDetector(onTap: () {
-                if (isBigWidth) {
-                  showDialog(
-                    context: context,
-                    useSafeArea: false,
-                    builder: (context) => CommentsDialog(post: post),
-                  );
-                } else {
-                  Navigator.pushNamed(
-                    context,
-                    'commentspage',
-                    arguments: post,
-                  );
-                }
-              }),
+              GestureDetector(
+                onTap: () {
+                  if (isBigWidth) {
+                    showDialog(
+                        context: context,
+                        useSafeArea: false,
+                        builder: (_) => BlocProvider.value(
+                              value: context.read<CommentBloc>(),
+                              child: CommentsDialog(post: post),
+                            ));
+                  } else {
+                    Navigator.pushNamed(
+                      context,
+                      'commentspage',
+                      arguments: post,
+                    );
+                  }
+                },
+                child: Image.asset('assets/icons/comment.png'),
+              ),
               const SizedBox(width: 4),
               Text(
                 post.comments.length.toString(),

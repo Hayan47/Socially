@@ -6,6 +6,7 @@ import 'package:socially/data/caching_service.dart';
 import 'package:socially/data/models/post_model.dart';
 import 'package:socially/data/repositories/spcial_repository.dart';
 import 'package:socially/logic/comment_bloc/comment_bloc.dart';
+import 'package:socially/logic/internet_cubit/internet_cubit.dart';
 import 'package:socially/logic/post_bloc/post_bloc.dart';
 import 'package:socially/logic/story_bloc/story_bloc.dart';
 import 'package:socially/presentation/screens/comments_section.dart';
@@ -19,6 +20,7 @@ class AppRouter {
   late Connectivity connectivity;
   late PostBloc postBloc;
   late CommentBloc commentBloc;
+  late InternetCubit internetCubit;
 
   AppRouter() {
     apiService = MockApiService();
@@ -29,6 +31,7 @@ class AppRouter {
     storyBloc = StoryBloc(socialRepository: socialRepository);
     postBloc = PostBloc(socialRepository: socialRepository);
     commentBloc = CommentBloc(socialRepository: socialRepository);
+    internetCubit = InternetCubit();
   }
 
   Route? onGenerateRoute(RouteSettings settings) {
@@ -40,6 +43,7 @@ class AppRouter {
               BlocProvider.value(value: storyBloc),
               BlocProvider.value(value: postBloc),
               BlocProvider.value(value: commentBloc),
+              BlocProvider.value(value: internetCubit),
             ],
             child: const MainScreen(),
           ),
@@ -58,5 +62,7 @@ class AppRouter {
 
   void dispose() {
     storyBloc.close();
+    postBloc.close();
+    commentBloc.close();
   }
 }

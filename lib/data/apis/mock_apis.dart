@@ -1,4 +1,5 @@
 // Generate mock data
+import 'package:socially/data/logger_service.dart';
 import 'package:socially/data/models/comment_model.dart';
 import 'package:socially/data/models/post_model.dart';
 import 'package:socially/data/models/story_model.dart';
@@ -10,6 +11,7 @@ class MockApiService {
   final List<User> _users;
   final List<Post> _posts;
   final List<Story> _stories;
+  final _logger = LoggerService().getLogger('MockApi Logger');
 
   MockApiService()
       : _users = generateUsers(7),
@@ -20,7 +22,7 @@ class MockApiService {
   }
 
   Future<List<Post>> fetchPosts() async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 2));
     return _posts;
   }
 
@@ -52,7 +54,7 @@ List<User> generateUsers(int count) {
   return List.generate(
       count,
       (index) => User(
-            id: 'user_$index',
+            id: '$index',
             name: 'User ${index + 1}',
             avatarUrl: 'assets/images/I04-${index + 1}.png',
           ));
@@ -63,7 +65,7 @@ List<Post> generatePosts(List<User> users, int count) {
   return List.generate(
     count,
     (index) => Post(
-      id: 'post_$index',
+      id: '$index',
       user: users[random.nextInt(users.length)],
       content: 'This is post number ${index + 1}',
       imageUrls: generateRandomPhotos(index),

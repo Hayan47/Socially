@@ -13,7 +13,7 @@ class MySnackBar extends SnackBar {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: AppColors.gray,
+              color: AppColors.navyBlue,
               boxShadow: const [
                 BoxShadow(
                   color: Colors.black12,

@@ -27,7 +27,7 @@ class CommentCard extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 18,
-            backgroundImage: NetworkImage(comment.user.avatarUrl),
+            backgroundImage: AssetImage(comment.user.avatarUrl),
           ),
           const SizedBox(width: 8),
           Expanded(
@@ -35,7 +35,7 @@ class CommentCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(15),
@@ -56,21 +56,28 @@ class CommentCard extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 8, top: 4),
                   child: Row(
                     children: [
-                      TextButton(
-                        onPressed: onLike,
+                      InkWell(
+                        onTap: () => onLike,
                         child: Text('Like',
                             style: AppTypography.labelSmall
                                 .copyWith(color: AppColors.darkGray)),
                       ),
-                      TextButton(
-                        onPressed: () => onReply(comment.user.name),
+                      const SizedBox(width: 15),
+                      InkWell(
+                        onTap: () => onReply(comment.user.name),
                         child: Text('Reply',
                             style: AppTypography.labelSmall
                                 .copyWith(color: AppColors.darkGray)),
                       ),
-                      Text(timeago.format(comment.timestamp),
+                      const SizedBox(width: 15),
+                      Flexible(
+                        child: Text(
+                          timeago.format(comment.timestamp),
                           style: AppTypography.bodySmall
-                              .copyWith(color: AppColors.darkGray)),
+                              .copyWith(color: AppColors.darkGray),
+                          maxLines: 2,
+                        ),
+                      ),
                     ],
                   ),
                 ),
