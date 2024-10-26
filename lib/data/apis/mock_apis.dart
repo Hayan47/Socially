@@ -125,6 +125,6 @@ List<String> generateRandomPhotos(int index) {
 
   return List.generate(
     numberOfPhotos,
-    (photoIndex) => 'https://picsum.photos/seed/${index}_${photoIndex}/400/400',
+    (photoIndex) => 'https://picsum.photos/seed/${index}_${photoIndex}/400/300',
   );
 }

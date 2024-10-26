@@ -16,7 +16,7 @@ class PostImage extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
-        final height = constraints.maxWidth;
+        final height = width * 0.7;
         //! No Pictures
         if (imagesUrls.isEmpty) {
           return Container();
@@ -99,12 +99,11 @@ class PostImage extends StatelessWidget {
                       },
                     );
                   },
-                  child: AspectRatio(
-                    aspectRatio: isBigWidth ? 16 / 9 : 4 / 3,
+                  child: SizedBox(
+                    width: width,
+                    height: height,
                     child: CachedNetworkImage(
                       imageUrl: imagesUrls.first,
-                      // width: width,
-                      // height: height,
                       fit: BoxFit.fill,
                       placeholder: (context, url) => Container(
                         color: Colors.grey[200],
