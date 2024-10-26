@@ -1,16 +1,47 @@
-# socially
+# Socially - Responsive Social Media UI
 
-A new Flutter project.
+A responsive social media application UI built with Flutter, demonstrating modern design patterns and cross-platform compatibility.
 
-## Getting Started
+## 📱 Project Overview
 
-This project is a starting point for a Flutter application.
+Socially is a clean, modern social media interface that adapts seamlessly across mobile, tablet, and desktop platforms. This project showcases UI/UX capabilities and responsive design implementation in Flutter.
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Key Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Responsive layout supporting multiple screen sizes
+- Custom UI components following Material Design principles
+- Cross-platform compatibility (iOS, Android, Web)
+- Social media core features:
+  - Feed layout
+  - User Stories
+  - Comment Section
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Flutter (latest stable version)
+- Dart SDK
+- IDE (VS Code/Android Studio)
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/socially.git
+```
+
+2. Install dependencies
+```bash
+flutter pub get
+```
+
+3. Run the application
+```bash
+flutter run
+```
+Apk Link: https://www.mediafire.com/file/dm8yzzdvgvlsujg/Socially.apk/file
+
+App Video: https://github.com/Hayan47/Hayan47/blob/main/socially.mp4
+
+
