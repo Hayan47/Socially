@@ -28,7 +28,7 @@ Socially is a clean, modern social media interface that adapts seamlessly across
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/socially.git
+git clone https://github.com/Hayan47/socially.git
 ```
 
 2. Install dependencies
